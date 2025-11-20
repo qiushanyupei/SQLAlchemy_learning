@@ -1,0 +1,11 @@
+用于建立表与表之间的关系，需要在两个表中同时建立back_populate对象，才能互相引用
+例：
+projects = relationship("Project", back_populates="user")
+第一个参数：本表要关联的其他表名
+第二个参数：要关联的对象
+用法：
+project.user  → 得到所属用户
+user.projects → 得到该用户的所有项目
+可以通过对象化的方式搜索主键，搜索符合条件的数据项：
+user = db.get(User, user_id)
+projects = user.projects
